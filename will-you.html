@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永久契約合同</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+.wrap{background:#1A1A2E;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;overflow:hidden;position:relative;padding:40px 0;}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.15;pointer-events:none;animation:bfloat 8s ease-in-out infinite;}
+.b1{width:350px;height:350px;background:#E94560;top:-80px;left:-80px;}
+.b2{width:260px;height:260px;background:#F5A623;bottom:-60px;right:-60px;animation-delay:3s;}
+.b3{width:180px;height:180px;background:#FF6B8A;top:45%;right:8%;animation-delay:1.5s;}
+@keyframes bfloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-18px) scale(1.05);}}
+.card{background:rgba(255,255,255,.03);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:50px 44px 42px;max-width:460px;width:88%;position:relative;z-index:10;animation:cin .8s cubic-bezier(.16,1,.3,1) both;}
+@keyframes cin{from{opacity:0;transform:translateY(36px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+.stamp{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#E94560;color:white;font-size:9.5px;font-weight:500;letter-spacing:2.5px;padding:5px 20px;border-radius:100px;white-space:nowrap;text-transform:uppercase;font-family:'DM Sans',sans-serif;}
+.lbl{font-size:10.5px;letter-spacing:3px;color:#9999AA;text-transform:uppercase;margin-bottom:13px;animation:fup .6s .3s both;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,33px);color:white;line-height:1.28;margin-bottom:7px;animation:fup .6s .4s both;}
+h1 span{color:#E94560;font-style:italic;}
+.divl{width:38px;height:2px;background:linear-gradient(90deg,#E94560,#F5A623);margin:16px 0;border-radius:2px;animation:fup .6s .5s both;}
+.sub{font-size:13px;color:#9999AA;margin-bottom:22px;line-height:1.65;animation:fup .6s .5s both;}
+@keyframes fup{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.namewrap{margin-bottom:22px;animation:fup .6s .55s both;}
+.namelbl{font-size:10px;letter-spacing:2px;color:#9999AA;text-transform:uppercase;margin-bottom:8px;}
+.nameinput{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 16px;color:white;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.nameinput::placeholder{color:rgba(255,255,255,.25);}
+.nameinput:focus{border-color:#E94560;}
+.opts{display:flex;flex-direction:column;gap:12px;}
+.opt{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:13px;border:1.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;animation:fup .6s both;}
+.opt:nth-child(1){animation-delay:.6s;}.opt:nth-child(2){animation-delay:.72s;}.opt:nth-child(3){animation-delay:.84s;}
+.opt::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#E94560,#FF6B8A);opacity:0;transition:opacity .25s ease;}
+.opt:hover{border-color:#E94560;transform:translateX(5px) scale(1.01);}
+.opt:hover::before{opacity:.08;}
+.opt.sel{border-color:#E94560;background:rgba(233,69,96,.12);transform:translateX(7px) scale(1.02);}
+.opt.sel::before{opacity:.12;}
+.cb{width:23px;height:23px;border-radius:6px;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;position:relative;z-index:1;}
+.opt.sel .cb{background:#E94560;border-color:#E94560;}
+.ci{opacity:0;transform:scale(0) rotate(-10deg);transition:all .25s cubic-bezier(.34,1.56,.64,1);color:white;font-size:12px;}
+.opt.sel .ci{opacity:1;transform:scale(1) rotate(0);}
+.ot{position:relative;z-index:1;}
+.otitle{font-size:15px;font-weight:500;color:white;margin-bottom:2px;}
+.osub{font-size:11px;color:#9999AA;}
+.oemoji{font-size:21px;margin-left:auto;position:relative;z-index:1;}
+.btn{margin-top:24px;width:100%;padding:16px;border-radius:13px;border:none;background:linear-gradient(135deg,#E94560,#FF6B8A);color:white;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all .25s ease;letter-spacing:.5px;animation:fup .6s .96s both;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(233,69,96,.4);}
+.btn:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none;}
+.result{display:none;text-align:center;animation:cin .6s cubic-bezier(.16,1,.3,1) both;}
+.result.show{display:block;}
+.hide{display:none;}
+.rstamp{display:inline-block;background:#E94560;color:white;font-size:9.5px;font-weight:500;letter-spacing:2.5px;padding:5px 17px;border-radius:100px;text-transform:uppercase;margin-bottom:19px;font-family:'DM Sans',sans-serif;}
+.remoji{font-size:54px;display:block;margin-bottom:15px;animation:hpop .6s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes hpop{from{transform:scale(0) rotate(-20deg);opacity:0;}to{transform:scale(1) rotate(0);opacity:1;}}
+.result h2{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:700;color:white;margin-bottom:6px;}
+.rname{font-size:13px;color:#9999AA;margin-bottom:16px;letter-spacing:.5px;}
+.rsub{font-size:13.5px;color:#9999AA;line-height:1.78;max-width:340px;margin:0 auto 26px;}
+.rsub span{color:white;}
+.rfooter{font-size:9.5px;letter-spacing:3px;color:#9999AA;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.08);padding-top:17px;font-family:'DM Sans',sans-serif;}
+.rfooter span{color:#F5A623;}
+.pfooter{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:9.5px;letter-spacing:2px;color:rgba(255,255,255,.18);pointer-events:none;font-family:'DM Sans',sans-serif;}
+.particle{position:fixed;pointer-events:none;font-size:19px;animation:pfly 2s ease-out forwards;z-index:100;}
+@keyframes pfly{0%{opacity:1;transform:translateY(0) rotate(0) scale(1);}100%{opacity:0;transform:translateY(-180px) rotate(360deg) scale(.3);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="card">
+    <div class="stamp">永久契約合同</div>
+    <div id="main">
+      <div class="lbl">提案日期 2026.04.23</div>
+      <h1>Would you be<br>my <span>girlfriend?</span></h1>
+      <div class="divl"></div>
+      <p class="sub">本提案已完整呈報所有條件。<br>請選擇您的回覆並完成最終確認。</p>
+      <div class="namewrap">
+        <div class="namelbl">簽核人姓名</div>
+        <input class="nameinput" id="nameInput" type="text" placeholder="請輸入您的名字" />
+      </div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,0)">
+          <div class="cb"><span class="ci">✓</span></div>
+          <div class="ot"><div class="otitle">Yes, for sure !</div><div class="osub">本人同意接受此提案</div></div>
+          <div class="oemoji">🥰</div>
+        </div>
+        <div class="opt" onclick="pick(this,1)">
+          <div class="cb"><span class="ci">✓</span></div>
+          <div class="ot"><div class="otitle">YES ! Absolutely !</div><div class="osub">本人強烈同意，好咖心喔！</div></div>
+          <div class="oemoji">💯</div>
+        </div>
+        <div class="opt" onclick="pick(this,2)">
+          <div class="cb"><span class="ci">✓</span></div>
+          <div class="ot"><div class="otitle">100% Yes !!!</div><div class="osub">無條件核准，立即生效</div></div>
+          <div class="oemoji">🎉</div>
+        </div>
+      </div>
+      <button class="btn" id="btn" onclick="go()" disabled>提交最終確認 →</button>
+    </div>
+    <div class="result" id="res">
+      <div class="rstamp" id="rs"></div>
+      <span class="remoji" id="re"></span>
+      <h2 id="rt"></h2>
+      <p class="rname" id="rn"></p>
+      <p class="rsub" id="rb"></p>
+      <div class="rfooter" id="rf"></div>
+    </div>
+  </div>
+  <div class="pfooter">DEXTER &amp; NENE · Project Us Activated</div>
+</div>
+<script>
+var sel=-1;
+var data=[
+  {e:"💕",t:"提案通過",b:"恭喜妳正式成為本案唯一合作對象。<br>即日起，開啟 <span>被偏愛、被照顧、被認真愛著</span> 的長期計畫。",f:"審核完成 · <span>合作愉快</span>"},
+  {e:"💯",t:"強力通過",b:"恭喜妳正式成為本案唯一合作對象。<br>即日起，開啟 <span>被呵護、被疼愛、好好愛著</span> 的長期計畫。",f:"審核完成 · <span>合作愉快</span>"},
+  {e:"🎉",t:"全票通過",b:"恭喜妳正式成為本案唯一合作對象。<br>即日起，開啟 <span>可愛浪漫、天天幸福</span> 的長期計畫。",f:"審核完成 · <span>合作愉快</span>"}
+];
+var ps=[["💕","✨","🎊"],["💯","🎊","💕"],["🎉","💥","❤️"]];
+function pick(el,i){document.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel');});el.classList.add('sel');sel=i;document.getElementById('btn').disabled=false;}
+function spawn(em){for(var i=0;i<20;i++){(function(idx){setTimeout(function(){var p=document.createElement('div');p.className='particle';p.textContent=em[Math.floor(Math.random()*em.length)];p.style.cssText='left:'+Math.random()*100+'vw;top:'+(Math.random()*60+20)+'vh;animation-duration:'+(1.5+Math.random())+'s';document.body.appendChild(p);setTimeout(function(){p.remove();},2500);},idx*80);})(i);}}
+function go(){if(sel<0)return;var d=data[sel];var name=document.getElementById('nameInput').value.trim();spawn(ps[sel]);document.getElementById('main').classList.add('hide');document.getElementById('rs').textContent='簽核結果';document.getElementById('re').textContent=d.e;document.getElementById('rt').textContent=d.t;document.getElementById('rn').textContent=name?'簽核人：'+name:'';document.getElementById('rb').innerHTML=d.b;document.getElementById('rf').innerHTML=d.f;document.getElementById('res').classList.add('show');}
+</script>
+</body>
+</html>
